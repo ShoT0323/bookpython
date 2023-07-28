@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static',filename='/css/style.css')}}">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <p>図書管理</p>
+  </header>
+  <nav class="bbb">
+    <h3>図書削除</h3></br>
+    <form action="{{url_for("delete_book_end")}}" method="post">
+      ISBN:<input type="text" name="isbn" required = required>
+      <button type="submit">検索</button>
+    </form>
+    <table class="table table-striped">
+      <thead>
+          <tr>
+              <th>タイトル</th>
+              <th>著者</th>
+              <th>出版社</th>
+              <th class="is">ISBN</th>
+              <th>ジャンル</th>
+          </tr>
+      </thead>
+      <tbody>
+        <form>
+          {% for book in book %}
+          <tr>
+              <td>{{ book[0] }}</td>
+              <td>{{ book[1] }}</td>
+              <td>{{ book[2] }}</td>
+              <td>{{ book[3] }}</td>
+              <td>{{ book[4] }}</td>
+          </tr>
+          {% endfor %}
+        </form>
+      </tbody>
+    </table>
+  </nav>
+</body>
+</html>
